@@ -37,9 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'school',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -74,6 +76,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'netology_orm_migrations',
+        'USER': 'postgres',         # Ваше имя пользователя в Postgres (обычно postgres)
+        'PASSWORD': '123',   # Ваш пароль от Postgres
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -130,4 +134,6 @@ try:
     from .settings_local import *
 except ImportError:
     pass
-
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
