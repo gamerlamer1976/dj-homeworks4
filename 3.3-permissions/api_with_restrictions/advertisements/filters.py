@@ -6,7 +6,10 @@ from advertisements.models import Advertisement
 class AdvertisementFilter(filters.FilterSet):
     """Фильтры для объявлений."""
 
-    # TODO: задайте требуемые фильтры
+    # Фильтр для даты создания
+    created_at = filters.DateFromToRangeFilter()
 
     class Meta:
         model = Advertisement
+        # Указываем поля, по которым разрешена фильтрация
+        fields = ['created_at', 'status']
